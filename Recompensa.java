@@ -21,4 +21,5 @@ public class Recompensa {
         return costoXP;
     }
     
+    
 }

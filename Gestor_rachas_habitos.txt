@@ -1,0 +1,4 @@
+Gestor de rachas de habitos
+*********************************
+Mini app en terminal que registra habitos diarios, calcula tus dias seguidos
+cumpli4ndolos "racha" y te otorga puntos de experiencia.

@@ -1,10 +1,18 @@
 import java.util.ArrayList;
 import java.util.List;
 
-// Logica del sistema
+/*
+    * Componente de Lógica de Negocio (Service Layer) y Persistencia (Data Access).
+    * Centraliza las colecciones de datos, el perfil del jugador y el manejo de archivos.
+ */
 public class GestorHabitos {
-
+    // Colecciones en memoria RAM (Estructuras de datos dinámicas)
     private List<Habito> listaHabitos;
+    private List<Recompensa> tiendaPremios;
+
+    // Estado Global del Jugador de Rol (RPG)
+    private int xpTotalContador = 0; // XP histórica acumulada (Define el nivel, nunca disminuye)
+    private int xpDisponibleMonedas = 0; // Billetera virtual (Disminuye al comprar en la tienda)
 
     public GestorHabitos() {
         this.listaHabitos = new ArrayList<>();

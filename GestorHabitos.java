@@ -14,13 +14,28 @@ public class GestorHabitos {
     private int xpTotalContador = 0; // XP histórica acumulada (Define el nivel, nunca disminuye)
     private int xpDisponibleMonedas = 0; // Billetera virtual (Disminuye al comprar en la tienda)
 
+    // Constantes de asignacion de archivos en el almacenamiento local
+    private final String ARCHIVO_HABITOS = "habitos_data.txt";
+    private final String ARCHIVO_PREMIOS = "premios_data.txt";
+    private final String ARCHIVO_PERFIL = "perfil_data.txt";
+
+    /**
+     * Constructor del gestor. Inicializa colecciones y carga el estado previo del juego.
+     */
     public GestorHabitos() {
         this.listaHabitos = new ArrayList<>();
+        this.tiendaPremios = new ArrayList<>();
+        cargarTodo();
     }
+
+    // ==========================================
+    // SECCIÓN: LOGICA DE NEGOCIO (HÁBITOS)
+    // ==========================================
 
     public void agregarHabito(String nombre) {
         listaHabitos.add(new Habito(nombre));
         System.out.println("✅ Hábito '" + nombre + "' añadido con éxito.");
+        guardarTodo(); // Persistencia inmediata ante cambios de estado
     }
 
     public void listaHabitos() {

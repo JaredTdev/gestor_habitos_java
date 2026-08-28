@@ -77,8 +77,19 @@ public class GestorHabitos {
             // 1. Guardar estructura de habitos
             PrintWriter writeH = new PrintWriter(new FileWriter(ARCHIVO_HABITOS));
             for (Habito h : listaHabitos) writeH.println(h.toFileString());
+            writeH.close();
+
+            // 2. Guardar estructura de la tienda
+            PrintWriter writerP = new PrintWriter(new FileWriter(ARCHIVO_PREMIOS));
+            for( Recompensa r : tiendaPremios) writerP.println(r.toFileString());
+            writerP.close();
+
+            // 3. Guardar atributos de perfil global
+            PrintWriter writerPerfil = new PrintWriter(new FileWriter(ARCHIVO_PERFIL));
+            writerPerfil.println(xpTotalContador + ";" + xpDisponibleMonedas);
+            writerPerfil.close();
         } catch (Exception e) {
-            // TODO: handle exception
+            System.out.println("!!! Error fatal al guardar los datos en disco: " + e.getMessage());
         }
     }
 }

@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +58,27 @@ public class GestorHabitos {
             System.out.println("❌ Número de hábito inválido.");
             return;
         }
-        listaHabitos.get(indice).registrarProgreso();
+        //listaHabitos.get(indice).registrarProgreso();
+        // Ejecuta la accion y captura la recompensa en XP
+        int xpGanada = listaHabitos.get(indice).registrarProgreso();
+        if (xpGanada > 0) {
+            this.xpTotalContador += xpGanada;
+            this.xpDisponibleMonedas += xpGanada;
+            guardarTodo();
+        }
     }
     
+
+     /**
+     * Serializa y sobrescribe el estado del programa completo en almacenamiento plano.
+     */
+    private void guardarTodo() {
+        try {
+            // 1. Guardar estructura de habitos
+            PrintWriter writeH = new PrintWriter(new FileWriter(ARCHIVO_HABITOS));
+            for (Habito h : listaHabitos) writeH.println(h.toFileString());
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
 }

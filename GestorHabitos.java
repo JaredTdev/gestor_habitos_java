@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -90,6 +93,25 @@ public class GestorHabitos {
             writerPerfil.close();
         } catch (Exception e) {
             System.out.println("!!! Error fatal al guardar los datos en disco: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Deserializa los datos en texto del disco y reconstruye el estado del software.
+     */
+    private void cargarTodo() {
+        try {
+            // 1. Carga y descomposicion del perfil financiero
+            File fPerfil = new File(ARCHIVO_PERFIL);
+            if (fPerfil.exists()) {
+                BufferedReader r = new BufferedReader(new FileReader(fPerfil));
+                String[] p = r.readLine().split(";");
+                this.xpTotalContador = Integer.parseInt(p[0]);
+                this.xpDisponibleMonedas = Integer.parseInt(p[1]);
+                r.close();
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
         }
     }
 }

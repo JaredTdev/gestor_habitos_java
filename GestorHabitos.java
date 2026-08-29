@@ -43,7 +43,7 @@ public class GestorHabitos {
         System.out.println("✅ Hábito '" + nombre + "' añadido con éxito.");
         guardarTodo(); // Persistencia inmediata ante cambios de estado
     }
-
+    /* 
     public void listaHabitos() {
         if (listaHabitos.isEmpty()) {
             System.out.println("📬 No hay hábitos registrados aún.");
@@ -56,13 +56,14 @@ public class GestorHabitos {
             h.getRachaActual() + " dias | ⭐ XP: " + h.getPuntosXP());
         }
     }
-
+    */
     public void marcarHabito(int indice) {
         if (indice < 0 || indice >= listaHabitos.size()) {
             System.out.println("❌ Número de hábito inválido.");
             return;
         }
         //listaHabitos.get(indice).registrarProgreso();
+
         // Ejecuta la accion y captura la recompensa en XP
         int xpGanada = listaHabitos.get(indice).registrarProgreso();
         if (xpGanada > 0) {
@@ -72,6 +73,16 @@ public class GestorHabitos {
         }
     }
     
+    // ==========================================
+    // SECCIÓN: LÓGICA DE NEGOCIO (TIENDA RPG)
+    // ==========================================
+    public void comprarPremio(int indice) {
+        if (indice < 0 || indice >= tiendaPremios.size()) {
+            System.out.println("X Numero de premio invalido.");
+            return;
+        }
+    }
+
 
      /**
      * Serializa y sobrescribe el estado del programa completo en almacenamiento plano.

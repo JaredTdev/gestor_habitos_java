@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,8 +111,25 @@ public class GestorHabitos {
                 this.xpDisponibleMonedas = Integer.parseInt(p[1]);
                 r.close();
             }
+
+            // 2. Carga y reconstruccion de objetos tipo habito
+            File fHabitos = new File(ARCHIVO_HABITOS);
+            if (fHabitos.exists()) {
+                BufferedReader r = new BufferedReader(new FileReader(fHabitos));
+                String l;
+                while ((l = r.readLine()) != null) {
+                    String[] p = l.split(";");
+                    // evaluacion ternaria del String "null" para reasignar objetos de tiempo nativo
+                    LocalDate f = p[3].equals("null") ? null : LocalDate.parse(p[3]);
+                    listaHabitos.add(new Habito(p[0], Integer.parseInt(p[1]), Integer.parseInt(p[2]), f));
+                }
+                r.close();
+            }
+
+            // 3. Carga y reconstruccion de objetos tipo recompensa
+            
         } catch (Exception e) {
-            // TODO: handle exception
+            System.out.println("Error controlado al cargar los archivos: " + e.getMessage());
         }
     }
 }

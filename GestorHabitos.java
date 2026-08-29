@@ -81,6 +81,17 @@ public class GestorHabitos {
             System.out.println("X Numero de premio invalido.");
             return;
         }
+
+        Recompensa premio = tiendaPremios.get(indice);
+
+        // Validacion financiera: Comprobacion de saldo de monedas.
+        if (xpDisponibleMonedas >= premio.getCostoXP()) {
+            xpDisponibleMonedas -= premio.getCostoXP(); // Gasto de economia dentro del gestor
+            System.out.println("!Comprado con exito! Disfruta de: " + premio.getNombre());
+            guardarTodo();
+        } else {
+            System.out.println("X No tienes suficiente XP disponible. !Sigue cumpliendo tus habitos");
+        }
     }
 
 

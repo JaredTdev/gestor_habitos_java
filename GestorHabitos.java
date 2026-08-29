@@ -76,6 +76,12 @@ public class GestorHabitos {
     // ==========================================
     // SECCIÓN: LÓGICA DE NEGOCIO (TIENDA RPG)
     // ==========================================
+    public void agregarPremio(String nombre, int costo) {
+        tiendaPremios.add(new Recompensa(nombre, costo));
+        System.out.println("! Premio '" + nombre + "' agregado a la tienda por " + costo + " XP.");
+        guardarTodo();
+    }
+
     public void comprarPremio(int indice) {
         if (indice < 0 || indice >= tiendaPremios.size()) {
             System.out.println("X Numero de premio invalido.");

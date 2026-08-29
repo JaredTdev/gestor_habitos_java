@@ -127,7 +127,16 @@ public class GestorHabitos {
             }
 
             // 3. Carga y reconstruccion de objetos tipo recompensa
-            
+            File fPremios = new File(ARCHIVO_PREMIOS);
+            if (fPremios.exists()) {
+                BufferedReader r = new BufferedReader(new FileReader(fPremios));
+                String l;
+                while ((l = r.readLine()) != null) {
+                    String[] p = l.split(";");
+                    tiendaPremios.add(new Recompensa(p[0], Integer.parseInt(p[1])));
+                }
+                r.close();
+            }
         } catch (Exception e) {
             System.out.println("Error controlado al cargar los archivos: " + e.getMessage());
         }

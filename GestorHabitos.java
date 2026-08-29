@@ -62,10 +62,11 @@ public class GestorHabitos {
             System.out.println("❌ Número de hábito inválido.");
             return;
         }
-        //listaHabitos.get(indice).registrarProgreso();
+        listaHabitos.get(indice).registrarProgreso();
 
         // Ejecuta la accion y captura la recompensa en XP
-        int xpGanada = listaHabitos.get(indice).registrarProgreso();
+        //int xpGanada = listaHabitos.get(indice).registrarProgreso();
+        int xpGanada = listaHabitos.get(indice).getPuntosXP();
         if (xpGanada > 0) {
             this.xpTotalContador += xpGanada;
             this.xpDisponibleMonedas += xpGanada;

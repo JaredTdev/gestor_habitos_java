@@ -43,7 +43,7 @@ public class GestorHabitos {
         System.out.println("✅ Hábito '" + nombre + "' añadido con éxito.");
         guardarTodo(); // Persistencia inmediata ante cambios de estado
     }
-
+    /* 
     public void listaHabitos() {
         if (listaHabitos.isEmpty()) {
             System.out.println("📬 No hay hábitos registrados aún.");
@@ -56,13 +56,14 @@ public class GestorHabitos {
             h.getRachaActual() + " dias | ⭐ XP: " + h.getPuntosXP());
         }
     }
-
+    */
     public void marcarHabito(int indice) {
         if (indice < 0 || indice >= listaHabitos.size()) {
             System.out.println("❌ Número de hábito inválido.");
             return;
         }
-        //listaHabitos.get(indice).registrarProgreso();
+        listaHabitos.get(indice).registrarProgreso();
+
         // Ejecuta la accion y captura la recompensa en XP
         int xpGanada = listaHabitos.get(indice).registrarProgreso();
         if (xpGanada > 0) {
@@ -72,6 +73,33 @@ public class GestorHabitos {
         }
     }
     
+    // ==========================================
+    // SECCIÓN: LÓGICA DE NEGOCIO (TIENDA RPG)
+    // ==========================================
+    public void agregarPremio(String nombre, int costo) {
+        tiendaPremios.add(new Recompensa(nombre, costo));
+        System.out.println("! Premio '" + nombre + "' agregado a la tienda por " + costo + " XP.");
+        guardarTodo();
+    }
+
+    public void comprarPremio(int indice) {
+        if (indice < 0 || indice >= tiendaPremios.size()) {
+            System.out.println("X Numero de premio invalido.");
+            return;
+        }
+
+        Recompensa premio = tiendaPremios.get(indice);
+
+        // Validacion financiera: Comprobacion de saldo de monedas.
+        if (xpDisponibleMonedas >= premio.getCostoXP()) {
+            xpDisponibleMonedas -= premio.getCostoXP(); // Gasto de economia dentro del gestor
+            System.out.println("!Comprado con exito! Disfruta de: " + premio.getNombre());
+            guardarTodo();
+        } else {
+            System.out.println("X No tienes suficiente XP disponible. !Sigue cumpliendo tus habitos");
+        }
+    }
+
 
      /**
      * Serializa y sobrescribe el estado del programa completo en almacenamiento plano.
@@ -127,7 +155,16 @@ public class GestorHabitos {
             }
 
             // 3. Carga y reconstruccion de objetos tipo recompensa
-            
+            File fPremios = new File(ARCHIVO_PREMIOS);
+            if (fPremios.exists()) {
+                BufferedReader r = new BufferedReader(new FileReader(fPremios));
+                String l;
+                while ((l = r.readLine()) != null) {
+                    String[] p = l.split(";");
+                    tiendaPremios.add(new Recompensa(p[0], Integer.parseInt(p[1])));
+                }
+                r.close();
+            }
         } catch (Exception e) {
             System.out.println("Error controlado al cargar los archivos: " + e.getMessage());
         }

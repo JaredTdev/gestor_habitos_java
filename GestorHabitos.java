@@ -65,8 +65,7 @@ public class GestorHabitos {
         listaHabitos.get(indice).registrarProgreso();
 
         // Ejecuta la accion y captura la recompensa en XP
-        //int xpGanada = listaHabitos.get(indice).registrarProgreso();
-        int xpGanada = listaHabitos.get(indice).getPuntosXP();
+        int xpGanada = listaHabitos.get(indice).registrarProgreso();
         if (xpGanada > 0) {
             this.xpTotalContador += xpGanada;
             this.xpDisponibleMonedas += xpGanada;

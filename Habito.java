@@ -38,13 +38,13 @@ public class Habito {
         * @return int Cantidad de XP ganados en esta accion. Retoma 0 si ya fue completado hoy. 
         * Devuelve la XP generada en este registro para que el gestor la sume al jugador.
     */
-    public void registrarProgreso(){
+    public int registrarProgreso(){
         LocalDate hoy = LocalDate.now();
 
         // Regla de validacion: Bloquear registros duplicados el mismo dia.
         if (ultimaFechaCumplida != null && ultimaFechaCumplida.equals(hoy)) {
             System.out.println("⚠️  Ya registraste este hábito hoy. ¡Vuelve mañana!");
-            return;
+            return 0;
         }
 
         verificarRacha(); // Valida si la racha se ropmpio antes de sumar
@@ -62,7 +62,7 @@ public class Habito {
         puntosXP += xpGanada;
         ultimaFechaCumplida = hoy;
         System.out.println("¡Progreso registrado! 🔥 Racha: " + rachaActual + " | + " + xpGanada + " XP");
-        return;
+        return xpGanada;
 
         //puntosXP += 10 + (rachaActual * 2); // 10 XP base + bono por racha
         //ultimaFechaCumplida = hoy;

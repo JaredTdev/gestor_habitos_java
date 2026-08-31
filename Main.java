@@ -62,5 +62,38 @@ public class Main {
 
         scanner.close();
     }
+
+    /**
+     * Subcontrolador del menú secundario dedicado a la tienda de canjes.
+     */
+    private static void manejarTienda(GestorHabitos gestorHabitos, Scanner scanner){
+        int opTienda;
+        do {
+            gestorHabitos.mostrarTienda();
+            System.out.println("\n--- MENÚ DE LA TIENDA ---");
+            System.out.println("1. Canjear / Comprar un premio");
+            System.out.println("2. Agregar un nuevo premio personalizado");
+            System.out.println("3. Regresar al menú principal");
+            System.out.print("Elige una opción: ");
+            
+            while (!scanner.hasNextInt()) {
+                System.out.println("Numero invalido: ");
+                scanner.next();
+            }
+            opTienda = scanner.nextInt();
+            scanner.nextLine();
+            if (opTienda == 1) {
+                System.out.println("Introduce el número del premio que quieres comprar: ");
+                int numPremio = scanner.nextInt() - 1;
+                gestorHabitos.comprarPremio(numPremio);
+            } else if (opTienda == 2) {
+                System.out.println("Nombre de la recompensa (ej: Jugar 1hr): ");
+                String nomPremio = scanner.nextLine();
+                System.out.println("Costo en XP: ");
+                int costo = scanner.nextInt();
+                gestorHabitos.agregarPremio(nomPremio, costo);
+            }
+        } while (opTienda != 3); // Lazo de permanencia en el submenu
+    }
     
 }

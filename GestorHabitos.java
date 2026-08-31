@@ -100,6 +100,24 @@ public class GestorHabitos {
         }
     }
 
+    // ==========================================
+    // SECCIÓN: RENDERIZADO DE ESTADOS
+    // ==========================================
+
+    /**
+     * Imprime el inventario de hábitos y procesa el algoritmo matemático de nivel RPG.
+     */
+    public void mostrarEstadoJugador(){
+        if (listaHabitos.isEmpty()) {
+            System.out.println("X No hay habitos registrados aun.");
+        } else {
+            System.out.println("\\n=== MIS HÁBITOS ===");
+            for (int i = 0; i < listaHabitos.size(); i++){
+                Habito h = listaHabitos.get(i);
+                System.out.println((i + 1) + ". " + h.getNombre() + " 🔥 Racha: " + h.getRachaActual() + " días | ⭐ " + h.getPuntosXP() + " XP totales");
+            }
+        }
+    }
 
      /**
      * Serializa y sobrescribe el estado del programa completo en almacenamiento plano.

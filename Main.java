@@ -25,12 +25,13 @@ public class Main {
             System.out.println("5. Salir");
             System.out.println("Elige una opcion: ");
 
+            // Filtro de seguridad: Evita excepcione de entrada si digitan letras en el menu numerico.
             while (!scanner.hasNextInt()) {
                 System.out.print("Por favor, introduce un número válido: ");
                 scanner.next();
             }
             opcion = scanner.nextInt();
-            scanner.nextLine(); // Limpiar el buffer
+            scanner.nextLine(); // Limpiar el buffer del teclado.
 
             switch (opcion) {
                 case 1:

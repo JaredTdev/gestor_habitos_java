@@ -43,7 +43,7 @@ public class Habito {
 
         // Regla de validacion: Bloquear registros duplicados el mismo dia.
         if (ultimaFechaCumplida != null && ultimaFechaCumplida.equals(hoy)) {
-            System.out.println("⚠️  Ya registraste este hábito hoy. ¡Vuelve mañana!");
+            System.out.println("!!!  Ya registraste este hábito hoy. ¡Vuelve mañana!");
             return 0;
         }
 
@@ -61,12 +61,12 @@ public class Habito {
         int xpGanada = 10 + (rachaActual *2);
         puntosXP += xpGanada;
         ultimaFechaCumplida = hoy;
-        System.out.println("¡Progreso registrado! 🔥 Racha: " + rachaActual + " | + " + xpGanada + " XP");
+        System.out.println("¡Progreso registrado! *! Racha: " + rachaActual + " | + " + xpGanada + " XP");
         return xpGanada;
 
         //puntosXP += 10 + (rachaActual * 2); // 10 XP base + bono por racha
         //ultimaFechaCumplida = hoy;
-        //System.out.println("¡Progreso registrado! 🔥 Racha actual: " + rachaActual + " | "
+        //System.out.println("¡Progreso registrado! *! Racha actual: " + rachaActual + " | "
         //     + (10 + rachaActual * 2) + " XP");
     }
     

@@ -40,26 +40,26 @@ public class GestorHabitos {
 
     public void agregarHabito(String nombre) {
         listaHabitos.add(new Habito(nombre));
-        System.out.println("✅ Hábito '" + nombre + "' añadido con éxito.");
+        System.out.println("** Hábito '" + nombre + "' añadido con éxito.");
         guardarTodo(); // Persistencia inmediata ante cambios de estado
     }
     /* 
     public void listaHabitos() {
         if (listaHabitos.isEmpty()) {
-            System.out.println("📬 No hay hábitos registrados aún.");
+            System.out.println("XX No hay hábitos registrados aún.");
             return;
         }
         System.out.println("\n=== MIS HÁBITOS ===");
         for (int i = 0; i < listaHabitos.size(); i++){
             Habito h = listaHabitos.get(i);
-            System.out.println((i + 1) + ". " + h.getNombre() + " | 🔥 Racha: " + 
-            h.getRachaActual() + " dias | ⭐ XP: " + h.getPuntosXP());
+            System.out.println((i + 1) + ". " + h.getNombre() + " | !* Racha: " + 
+            h.getRachaActual() + " dias | * XP: " + h.getPuntosXP());
         }
     }
     */
     public void marcarHabito(int indice) {
         if (indice < 0 || indice >= listaHabitos.size()) {
-            System.out.println("❌ Número de hábito inválido.");
+            System.out.println("XX Número de hábito inválido.");
             return;
         }
         listaHabitos.get(indice).registrarProgreso();
@@ -114,7 +114,7 @@ public class GestorHabitos {
             System.out.println("\\n=== MIS HÁBITOS ===");
             for (int i = 0; i < listaHabitos.size(); i++){
                 Habito h = listaHabitos.get(i);
-                System.out.println((i + 1) + ". " + h.getNombre() + " 🔥 Racha: " + h.getRachaActual() + " días | ⭐ " + h.getPuntosXP() + " XP totales");
+                System.out.println((i + 1) + ". " + h.getNombre() + " !* Racha: " + h.getRachaActual() + " días | ⭐ " + h.getPuntosXP() + " XP totales");
             }
         }
     }
@@ -122,7 +122,7 @@ public class GestorHabitos {
     public void mostrarTienda() {
         System.out.println("\n🛒 TIENDA DE RECOMPENSAS (Saldo: " + xpDisponibleMonedas + " XP)");
         if (tiendaPremios.isEmpty()) {
-            System.out.println("🛍️ La tienda está vacía. ¡Crea un premio primero!");
+            System.out.println("*$ La tienda está vacía. ¡Crea un premio primero!");
             return;
         }
         for (int i = 0; i < tiendaPremios.size(); i++) {

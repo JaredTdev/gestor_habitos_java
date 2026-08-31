@@ -35,27 +35,30 @@ public class Main {
 
             switch (opcion) {
                 case 1:
-                    gestor.listaHabitos();
+                    gestor.mostrarEstadoJugador();
                     break;
                 case 2:
-                    gestor.listaHabitos();
-                    System.out.print("Introduce el número del hábito cumplido: ");
+                    gestor.mostrarEstadoJugador();
+                    System.out.println("Introduce el numero del habito cumplido: ");
                     int numHabito = scanner.nextInt() - 1;
                     gestor.marcarHabito(numHabito);
                     break;
                 case 3:
                     System.out.print("Nombre del nuevo hábito: ");
-                    String nombre = scanner.nextLine();
-                    gestor.agregarHabito(nombre);
+                    String nombreH = scanner.nextLine();
+                    gestor.agregarHabito(nombreH);
                     break;
                 case 4:
+                    // Desvio del flujo de la interfaz al submeni aislado de la tienda
+                    break;
+                case 5:
                     System.out.println("¡Sigue manteniendo tus rachas altas! Adiós.");
                     break;
                 default:
                     System.out.println("❌ Opción no válida.");
             }
         } 
-        while (opcion != 4);
+        while (opcion != 5); // Liberacion del recurso del teclado de sistema
 
         scanner.close();
     }

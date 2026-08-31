@@ -1,8 +1,12 @@
 import java.util.Scanner;
 
+/**
+ * Controlador de Entrada Principal y Capa de Presentación del usuario.
+ */
 // Interfaz del usuario
 public class Main {
     public static void main(String[] args) {
+        // Inicialización de componentes centrales de control
         GestorHabitos gestor = new GestorHabitos();
         Scanner scanner = new Scanner(System.in);
         int opcion;
@@ -11,12 +15,14 @@ public class Main {
         gestor.agregarHabito("Meditar 10 min");
         gestor.agregarHabito("Programar en Java 10 min");
 
+        // Bucle de interfaz principal
         do {
-            System.out.println("\n--- GAMIFIED HABIT TRACKER ---");
-            System.out.println("1. Ver mis habitos");
-            System.out.println("2. Registrar progreso del dia");
+            System.out.println("\n--- GAMIFIED HABIT TRACKER v3.0---");
+            System.out.println("1. Ver estado y perfil");
+            System.out.println("2. Registrar progreso de habito");
             System.out.println("3. Crear nuevo habito");
-            System.out.println("4. Salir");
+            System.out.println("4. Entrar en la tienda de recompensas");
+            System.out.println("5. Salir");
             System.out.println("Elige una opcion: ");
 
             while (!scanner.hasNextInt()) {

@@ -117,6 +117,30 @@ public class GestorHabitos {
                 System.out.println((i + 1) + ". " + h.getNombre() + " !* Racha: " + h.getRachaActual() + " días | ⭐ " + h.getPuntosXP() + " XP totales");
             }
         }
+
+        // Algoritmo de logaritmo / ciclo RPG: Calcula nivel basado en XP Total
+        // Formula iterativa: Siguiente nivel requiere (nivel actual * 100 XP)
+        /*
+            *El algoritmo de logaritmo para calcular curvas de nivel (sistemas de progresión) se
+            *utiliza ampliamente en el diseño de videojuegos de rol (RPG) para evitar que los
+            *personajes suban de nivel demasiado rápido a medida que avanza la partida.
+         */
+        int nivel = 1; 
+        int xpNecesaria = 100;
+        int xpRestante = xpTotalContador;
+
+        while (xpRestante >= xpNecesaria) {
+            xpRestante -= xpNecesaria;
+            nivel++;
+            xpNecesaria = nivel *100;
+        }
+        System.out.println("\n=================================");
+        System.out.println("PERFIL DEL JUGADOR:");
+        System.out.println("Nivel Actual: " + nivel);
+        System.out.println("XP Histórica (Nivel): " + xpTotalContador);
+        System.out.println("Progreso de Nivel: [" + xpRestante + " / " + xpNecesaria + " XP]");
+        System.out.println(" XP DISPONIBLE (MONEDAS): " + xpDisponibleMonedas + " XP");
+        System.out.println("=================================");
     }
 
     public void mostrarTienda() {

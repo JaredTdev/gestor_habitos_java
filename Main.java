@@ -50,12 +50,13 @@ public class Main {
                     break;
                 case 4:
                     // Desvio del flujo de la interfaz al submeni aislado de la tienda
+                    manejarTienda(gestor, scanner);
                     break;
                 case 5:
                     System.out.println("¡Sigue manteniendo tus rachas altas! Adiós.");
                     break;
                 default:
-                    System.out.println("❌ Opción no válida.");
+                    System.out.println("X Opción no válida.");
             }
         } 
         while (opcion != 5); // Liberacion del recurso del teclado de sistema

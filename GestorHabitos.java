@@ -144,7 +144,7 @@ public class GestorHabitos {
     }
 
     public void mostrarTienda() {
-        System.out.println("\n🛒 TIENDA DE RECOMPENSAS (Saldo: " + xpDisponibleMonedas + " XP)");
+        System.out.println("\n TIENDA DE RECOMPENSAS (Saldo: " + xpDisponibleMonedas + " XP)");
         if (tiendaPremios.isEmpty()) {
             System.out.println("*$ La tienda está vacía. ¡Crea un premio primero!");
             return;
@@ -155,6 +155,9 @@ public class GestorHabitos {
         }
     }
 
+    // ==========================================
+    // SECCIÓN: PERSISTENCIA DE ARCHIVOS (I/O)
+    // ==========================================
      /**
      * Serializa y sobrescribe el estado del programa completo en almacenamiento plano.
      */

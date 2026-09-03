@@ -96,7 +96,9 @@ public class GestorHabitos {
             System.out.println("!Comprado con exito! Disfruta de: " + premio.getNombre());
             guardarTodo();
         } else {
+            System.out.println("\n=================================");
             System.out.println("X No tienes suficiente XP disponible. !Sigue cumpliendo tus habitos");
+            System.out.println("=================================");
         }
     }
 
